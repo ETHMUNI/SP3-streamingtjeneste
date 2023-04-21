@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Film
+class Serie
+class UserMenu
+class Dashboard
+class UserPick
+
+
+package "util"{
+class TextUI
+class UserIO
+}
+
+
+
+
+@enduml
