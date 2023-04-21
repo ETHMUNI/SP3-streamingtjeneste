@@ -13,6 +13,7 @@ class MedieHandler
 class UserHandler
 interface UI
 interface IO
+abstract Movies
 
 
 
@@ -48,9 +49,10 @@ UserMenu *-- Dashboard
 Dashboard *--Medie
 Dashboard *-- UserHandler
 Dashboard *-- MedieHandler
+Medie *-- Movies
 
-Medie <|-- Film
-Medie <|-- Serie
+Movies <|-- Film
+Movies <|-- Serie
 Film *-- UserPick
 Serie *-- UserPick
 
