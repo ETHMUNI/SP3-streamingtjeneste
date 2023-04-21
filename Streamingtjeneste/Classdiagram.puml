@@ -1,11 +1,19 @@
 @startuml
 'https://plantuml.com/class-diagram
+!pragma layout smetana
 
+interface Medie
+class Main
 class Film
 class Serie
 class UserMenu
 class Dashboard
 class UserPick
+class MedieHandler
+class UserHandler
+interface UI
+interface IO
+
 
 
 package "util"{
@@ -13,6 +21,41 @@ class TextUI
 class UserIO
 }
 
+Medie : String getTitel()
+Medie : int getÅrstal()
+Medie : int getKategori()
+Medie : int Rating()
+
+Film : - String titel
+Film : - int Årstal
+Film : - String kategori 1,2,3
+Film : - int Rating
+
+Serie : - String titel
+Serie : - int Årstal
+Serie : - String kategori 1,2,3
+Serie : - int Rating
+Serie : - int sæson/Episoder
+
+UserPick : + void addMedie()
+UserPick : + void removeMedie()
+UserPick : + void playMedie()
+UserHandler : void håndterer login og bruger data
+MedieHandler : void håndterer film og serier i Lister
+
+Main *-- UserMenu
+UserMenu *-- Dashboard
+Dashboard *--Medie
+Dashboard *-- UserHandler
+Dashboard *-- MedieHandler
+
+Medie <|-- Film
+Medie <|-- Serie
+Film *-- UserPick
+Serie *-- UserPick
+
+ui <|-- TextUI
+IO <|-- UserIO
 
 
 
