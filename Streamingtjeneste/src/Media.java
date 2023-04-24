@@ -7,7 +7,7 @@ public interface Media {
 
     int getYear(); // the year when the movie/series first came out
 
-    ArrayList<String> getCategory(); // Which category/genre does the film/series belong in
+   String getCategory(); // Which category/genre does the film/series belong in
 
     int getRating(); // The rating of the film and series
 
