@@ -13,7 +13,27 @@ private int rating;
         this.year = year;
         this.category = category;
         this.rating = rating;
-                
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    @Override
+    public String toString() {
+        return "";
     }
 }
 
