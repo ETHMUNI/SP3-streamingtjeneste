@@ -2,18 +2,20 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        TextUI UI = new TextUI();
+        FindMovies mo = new FindMovies();
+        //UI.startMenu();
 
-        // Bed brugeren om at indtaste filnavnet og den streng, der skal søges efter
-        System.out.print("Indtast filnavnet: ");
-        String fileName = scanner.nextLine();
-        System.out.print("Indtast søgestrengen: ");
-        String searchString = scanner.nextLine();
 
-        // Kald søgemetoden i FileSearch-klassen
-        Dashboard.search(fileName);
+        String userChoice = UI.startMenu();
+        switch (userChoice) {
+            case "1":
+                System.out.println("hej");
+            case "2":
+                mo;
+            case "3":
 
-        // Luk scanneren
-        scanner.close();
+            case "4":
+        }
     }
 }
