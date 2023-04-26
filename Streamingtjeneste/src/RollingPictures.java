@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public abstract class RollingPictures implements Media {
 
 private String title;
@@ -8,7 +10,7 @@ private String category;
 
 private int rating;
 
-    public RollingPictures(String title, int year, String category, int rating) {
+    public RollingPictures(String title, int year,String category, int rating) {
         this.title = title;
         this.year = year;
         this.category = category;
@@ -33,7 +35,7 @@ private int rating;
 
     @Override
     public String toString() {
-        return "";
+        return "Title "+ getTitle() +"Year " +getYear()+ "Category" +getCategory()+ "Rating"+getRating();
     }
 }
 
