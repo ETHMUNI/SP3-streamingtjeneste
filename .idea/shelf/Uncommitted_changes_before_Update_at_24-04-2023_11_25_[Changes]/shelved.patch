@@ -1,0 +1,60 @@
+Index: Streamingtjeneste/src/Series.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class Series extends RollingPictures{\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Streamingtjeneste/src/Series.java b/Streamingtjeneste/src/Series.java
+--- a/Streamingtjeneste/src/Series.java	(revision 2ba84a46fcaeb9b2fc57b9a503f34bca280e7427)
++++ b/Streamingtjeneste/src/Series.java	(date 1682328326259)
+@@ -1,3 +1,30 @@
+ public class Series extends RollingPictures{
+ 
++    private boolean series;
++    private int registrationFee;
++
++    public Series(String title, int year, String category, int rating, boolean series) {
++        super(title, year, category, rating);
++        this.series = series;
++    }
++
++    @Override
++    public String getTitle() {
++        return null;
++    }
++
++    @Override
++    public int getYear() {
++        return 0;
++    }
++
++    @Override
++    public String getCategory() {
++        return null;
++    }
++
++    @Override
++    public int getRating() {
++        return 0;
++    }
+ }
+Index: Streamingtjeneste/src/Movies.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class Movies extends RollingPictures{\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Streamingtjeneste/src/Movies.java b/Streamingtjeneste/src/Movies.java
+--- a/Streamingtjeneste/src/Movies.java	(revision 2ba84a46fcaeb9b2fc57b9a503f34bca280e7427)
++++ b/Streamingtjeneste/src/Movies.java	(date 1682325161656)
+@@ -1,4 +1,6 @@
+ public class Movies extends RollingPictures{
+ 
+ 
+-}
++
++
++}
+\ No newline at end of file
