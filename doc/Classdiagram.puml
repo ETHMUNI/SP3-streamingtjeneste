@@ -4,7 +4,7 @@
 
 interface Medie
 class Main
-class Film
+class Movie
 class Serie
 class UserMenu
 class Dashboard
@@ -27,16 +27,24 @@ Medie : int getÅrstal()
 Medie : int getKategori()
 Medie : int Rating()
 
-Film : - String titel
-Film : - int Årstal
-Film : - String kategori 1,2,3
-Film : - int Rating
+Movie : - String titel
+Movie : - int Årstal
+Movie : - String kategori 1,2,3
+Movie : - int Rating
 
 Serie : - String titel
 Serie : - int Årstal
 Serie : - String kategori 1,2,3
 Serie : - int Rating
 Serie : - int sæson/Episoder
+
+UserMenu : creatUser()
+UserMenu : logIn()
+
+Dashboard : search()
+Dashboard : category()
+Dashboard : movieWatch()
+Dashboard : savedMovies()
 
 UserPick : + void addMedie()
 UserPick : + void removeMedie()
@@ -51,9 +59,9 @@ Dashboard *-- UserHandler
 Dashboard *-- MedieHandler
 Medie *-- RollingPictures
 
-RollingPictures <|-- Film
+RollingPictures <|-- Movie
 RollingPictures <|-- Serie
-Film *-- UserPick
+Movie *-- UserPick
 Serie *-- UserPick
 
 UI <|-- TextUI
