@@ -24,7 +24,6 @@ public class TextUI {
         String id = Integer.toString(counter()); ////(UUID.randomUUID().toString();)
         if(userHandler.login(userName, password, id)){
             System.out.println("Welcome " + userName);
-            movieMenu();
         }
         else{
             System.out.println("Sorry, the username or password is incorrect");
@@ -41,7 +40,6 @@ public class TextUI {
         String id = Integer.toString(counter());
         if(userHandler.createUser(userName, password, id)){
             System.out.println("Welcome " + userName);
-            movieMenu();
         }
         else{
             System.out.println("Sorry, the username or password can not be used try agin:");
@@ -49,15 +47,15 @@ public class TextUI {
         }
     }
 
-    public String movieMenu(){
-        System.out.println("You are now logged in and have the following choises: " + "\n" + "1: movies" + "\n" + "2: series");
-        return scanner.nextLine();
-    }
-
     public int counter(){
         Random rn = new Random();
         int answer = rn.nextInt(100) + 1;
         return answer;
+    }
+
+    public String startMenu(){
+        System.out.println("Welcome to Mustafa's movies, you can now choose one of the options" + "\n" + "1: Search for a movie" + "\n" + "2: Search a movie in a specific category" + "\n" + "3: The list of the movies you have watched" + "\n" + "4: The list of the movies you have saved" + "\n" + "5: Show all movies");
+        return scanner.nextLine();
     }
 
 }
