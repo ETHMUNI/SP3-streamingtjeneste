@@ -57,7 +57,7 @@ UserMenu *-- Dashboard
 Dashboard *--Medie
 Dashboard *-- UserHandler
 Dashboard *-- MedieHandler
-Medie *-- RollingPictures
+Medie <|-- RollingPictures
 
 RollingPictures <|-- Movie
 RollingPictures <|-- Serie
