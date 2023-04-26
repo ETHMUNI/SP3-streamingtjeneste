@@ -23,6 +23,8 @@ public class Main {
         }
         userHandler.saveUsers();
 
+        ////Dashboard
+
         //// Movie Searcher Part
         Movies movie = new Movies();
         Scanner scan = new Scanner(System.in);
