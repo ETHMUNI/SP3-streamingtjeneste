@@ -1,0 +1,94 @@
+Index: Streamingtjeneste/src/RollingPictures.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.ArrayList;\r\n\r\npublic abstract class RollingPictures implements Media {\r\n\r\nprivate String title;\r\n\r\nprivate int year;\r\n\r\nprivate ArrayList <String> category;\r\n\r\nprivate int rating;\r\n\r\n    public RollingPictures(String title, int year, ArrayList <String> category, int rating) {\r\n        this.title = title;\r\n        this.year = year;\r\n        this.category = category;\r\n        this.rating = rating;\r\n    }\r\n\r\n    public String getTitle() {\r\n        return title;\r\n    }\r\n\r\n    public int getYear() {\r\n        return year;\r\n    }\r\n\r\n    public ArrayList<String> getCategory() {\r\n        return category;\r\n    }\r\n\r\n    public int getRating() {\r\n        return rating;\r\n    }\r\n\r\n    @Override\r\n    public String toString() {\r\n        return \"\";\r\n    }\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Streamingtjeneste/src/RollingPictures.java b/Streamingtjeneste/src/RollingPictures.java
+--- a/Streamingtjeneste/src/RollingPictures.java	(revision 8ada3603d612429107ef407131b1772ed8fc700a)
++++ b/Streamingtjeneste/src/RollingPictures.java	(date 1682328487989)
+@@ -6,11 +6,11 @@
+ 
+ private int year;
+ 
+-private ArrayList <String> category;
++private String category;
+ 
+ private int rating;
+ 
+-    public RollingPictures(String title, int year, ArrayList <String> category, int rating) {
++    public RollingPictures(String title, int year,String category, int rating) {
+         this.title = title;
+         this.year = year;
+         this.category = category;
+@@ -25,7 +25,7 @@
+         return year;
+     }
+ 
+-    public ArrayList<String> getCategory() {
++    public String getCategory() {
+         return category;
+     }
+ 
+Index: Streamingtjeneste/src/Series.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class Series extends RollingPictures{\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Streamingtjeneste/src/Series.java b/Streamingtjeneste/src/Series.java
+--- a/Streamingtjeneste/src/Series.java	(revision 8ada3603d612429107ef407131b1772ed8fc700a)
++++ b/Streamingtjeneste/src/Series.java	(date 1682328327078)
+@@ -1,3 +1,30 @@
+ public class Series extends RollingPictures{
+ 
++    private boolean series;
++    private int registrationFee;
++
++    public Series(String title, int year, String category, int rating, boolean series) {
++        super(title, year, category, rating);
++        this.series = series;
++    }
++
++    @Override
++    public String getTitle() {
++        return null;
++    }
++
++    @Override
++    public int getYear() {
++        return 0;
++    }
++
++    @Override
++    public String getCategory() {
++        return null;
++    }
++
++    @Override
++    public int getRating() {
++        return 0;
++    }
+ }
+Index: Streamingtjeneste/src/Movies.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.ArrayList;\r\n\r\npublic class Movies extends RollingPictures{\r\n\r\n\r\n    public Movies(String title, int year, ArrayList<String> category, int rating) {\r\n        super(title, year, category, rating);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Streamingtjeneste/src/Movies.java b/Streamingtjeneste/src/Movies.java
+--- a/Streamingtjeneste/src/Movies.java	(revision 8ada3603d612429107ef407131b1772ed8fc700a)
++++ b/Streamingtjeneste/src/Movies.java	(date 1682328348394)
+@@ -1,9 +1,4 @@
+-import java.util.ArrayList;
+-
+ public class Movies extends RollingPictures{
+ 
+ 
+-    public Movies(String title, int year, ArrayList<String> category, int rating) {
+-        super(title, year, category, rating);
+-    }
+ }
