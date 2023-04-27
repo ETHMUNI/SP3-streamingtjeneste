@@ -8,14 +8,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MediaHandler {
-    List<Movie> movies = readMoviesFromCSV("Movies.txt");
+    private List<Movie> movies = readMoviesFromCSV("Movies.txt");
 
     public List<Movie> getMovies() {
         return movies;
     }
     public List<Movie> searchMovieByName(String movieName) {
-        return movies;
+        List<Movie> matchingMovies = new ArrayList<>();
+        for (Movie movie : movies) {
+            String name = movie.getName();
+            if (name.toLowerCase().contains(movieName.toLowerCase())) {
+                matchingMovies.add(movie);
+            }
+        }
+        return matchingMovies;
     }
+    public Movie getMovieByNumber(int number) {
+        return movies.get(number - 1);
+    }
+
 
     private static List<Movie> readMoviesFromCSV(String fileName) {
         List<Movie> movies = new ArrayList<>();
@@ -108,23 +119,6 @@ class Movie {
 
     }
 
-    public void searchMovieByName(String movieName) {
-        boolean foundMovie = false;
-
-        List<Movie> movies = new ArrayList<>();
-        for (Movie movie : movies) {
-            String name = movie.getName();
-            if (name.equalsIgnoreCase(movieName)) {
-                foundMovie = true;
-                System.out.println("You are now playing " + name);
-                break;
-            }
-        }
-
-        if (!foundMovie) {
-            System.out.println("Movie not found.");
-        }
-    }
 
     @Override
     public String toString() {

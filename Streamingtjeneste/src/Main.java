@@ -41,21 +41,39 @@ public class Main {
 
         switch (userChoice) {
             case "1":
+                MediaHandler mediaHandler = new MediaHandler();
                 Scanner scanner = new Scanner(System.in);
+
                 System.out.print("Enter a movie name to search: ");
                 String movieName = scanner.nextLine();
-                List<Movie> searchResult = csv.searchMovieByName(movieName);
-                if (searchResult.equals(movieName)) {
-                    System.out.println("Search results:");
-                    for (Movie movie : searchResult) {
-                        System.out.println(movie.getName());
-                    }
 
-                } else {
-                    System.out.println("Search results:");
-                    System.out.println("Sorry, no movies found with that name.");
+                List<Movie> matchingMovies = mediaHandler.searchMovieByName(movieName);
+
+                if (matchingMovies.size() == 0) {
+                    System.out.println("No matching movies found.");
+                    return;
                 }
-                break;
+
+                System.out.println("Matching movies:");
+                for (int i = 0; i < matchingMovies.size(); i++) {
+                    System.out.println((i + 1) + ". " + matchingMovies.get(i).getName());
+                }
+
+                System.out.print("Enter the number of the movie to select: ");
+                int movieIndex = scanner.nextInt();
+                scanner.nextLine(); // consume the newline character
+
+                if (movieIndex < 1 || movieIndex > matchingMovies.size()) {
+                    System.out.println("Invalid movie number.");
+                    return;
+                }
+
+                Movie selectedMovie = matchingMovies.get(movieIndex - 1);
+                System.out.println("Selected movie: " + selectedMovie.getName());
+
+                // Call your function on selectedMovie here
+
+
             case "2":
 
             //    MediaHandler.movieList();
@@ -65,14 +83,24 @@ public class Main {
             case "4":
 
             case "5":
-                // go through the movies.txt and print out all the names
-                // then user enters the name of the movie, user wants to watch
-               // Movies.playMovie();
                 List<Movie> liste = csv.getMovies();
-                for (Movie movie : liste) {
-                    System.out.println(movie.getName());
+                Scanner movieScanner = new Scanner(System.in);
+
+                for (int i = 0; i < liste.size(); i++) {
+                    Movie movie = liste.get(i);
+                    System.out.println((i+1) + ". " + movie.getName());
                 }
-                textUI.startMenu();
+
+                System.out.print("Please enter the number of the movie you'd like to select: ");
+                int selection = movieScanner.nextInt();
+
+                if (selection < 1 || selection > liste.size()) {
+                    System.out.println("Invalid movie number.");
+                    return;
+                }
+
+                Movie selectedMovie2 = liste.get(selection - 1);
+                System.out.println("Selected movie: " + selectedMovie2.getName());
                 break;
 
         }
