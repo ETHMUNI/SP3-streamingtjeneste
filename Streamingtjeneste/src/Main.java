@@ -26,19 +26,19 @@ public class Main {
         ////Dashboard
 
         //// Movie Searcher Part
-        //Movies movie = new Movies();
+        Movies movie = new Movies(textUI);
         // Scanner scan = new Scanner(System.in);
         String userChoice = textUI.startMenu();
         // String movieUserInput = Movies.getUserInput();
 
         switch (userChoice) {
             case "1":
-                Movies.searchFile(Movies.getUserInputMovie());
-                Movies.playMovie();
+                movie.searchFile(movie.getUserInputMovie());
+                movie.playMovie();
                 break;
             case "2":
-                Movies.searchFile(Movies.getUserInputCategory());
-                Movies.playMovie();
+                movie.searchFile(movie.getUserInputCategory());
+                movie.playMovie();
                 break;
             case "3":
 
@@ -47,9 +47,9 @@ public class Main {
             case "5":
                 // go through the movies.txt and print out all the names
                 // then user enters the name of the movie, user wants to watch
-                Movies.getAllMovies();
-                Movies.playMovie();
-                textUI.startMenu();
+                movie.getAllMovies();
+                movie.playMovie();
+                movie.backToMenu();
                 break;
         }
 
