@@ -1,0 +1,2 @@
+Hans,Kaffekop,70
+Hash,Kaffekop,52
