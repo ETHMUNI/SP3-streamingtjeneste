@@ -66,14 +66,19 @@ public class Movies extends RollingPictures{
     }
     // Ask the user if they want to go back to the dashboard or exit app
     public static void backToMenu() {
-        System.out.println("Enter 'back' to return to the dashboard or press enter to exit");
-        String input = scan.nextLine();
+
+        while(true){
+            System.out.println("Enter 'back' to return to the dashboard or press enter to exit");
+            String input = scan.nextLine();
+
         if (input.equalsIgnoreCase("back")) {
-            ui.startMenuMovies(); // throws an error!!!
-        } else {
-            System.exit(0); // Close app
-            System.out.println("Closing down application");
+            ui.firstMenu(); // throws an error!!!!!!!!!!!
+            break;
         }
+        } /*else if (input.equals("q")) {
+            //System.exit("q"); // Close app
+            System.out.println("Closing down application");
+        }*/
     }
 
     public static void getAllMovies() {

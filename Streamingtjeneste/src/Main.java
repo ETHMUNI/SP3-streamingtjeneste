@@ -53,7 +53,7 @@ public class Main {
                         // then user enters the name of the movie, user wants to watch
                         Movies.getAllMovies();
                         Movies.playMovie();
-                        textUI.startMenuMovies();
+                        Movies.backToMenu();
                         break;
                 }
                 break;
@@ -62,16 +62,21 @@ public class Main {
                 String userChoice2 = textUI.startMenuSeries();
                 switch (userChoice2) {
                     case "1":
-                        System.out.println("hejsa");
+                        Series.searchFile(Series.getUserInputSerie());
+                        Series.playSerie();
                         break;
                     case "2":
-                        System.out.println("test");
+                        Series.searchFile(Series.getUserInputSerie());
+                        Series.playSerie();
                         break;
                     case "3":
                         break;
                     case "4":
                         break;
                     case "5":
+                        Series.getAllMovies();
+                        Series.playSerie();
+                        textUI.startMenuSeries();
                         break;
                 }
                 break;
