@@ -1,6 +1,5 @@
 import java.util.Random;
 import java.util.Scanner;
-import java.util.UUID;
 
 public class TextUI {
     Scanner scanner;
@@ -53,9 +52,24 @@ public class TextUI {
         return answer;
     }
 
-    public String startMenu(){
-        System.out.println("Welcome to Mustafa's movies, you can now choose one of the options" + "\n" + "1: Search for a movie" + "\n" + "2: Search a movie in a specific category" + "\n" + "3: The list of the movies you have watched" + "\n" + "4: The list of the movies you have saved" + "\n" + "5: Show all movies");
+    public String firstMenu(){
+        System.out.println("Welcome to Mustafa's movies, you can now choose one of the options" + "\n" + "1: Movies" +"\n"+ "2: Series");
+        return scanner.nextLine();
+
+    }
+
+    public String startMenuMovies(){
+        System.out.println("You choose movies, now you can pick one of the options");
+        System.out.println( "1: Search for a movie" + "\n" + "2: Search a movie in a specific category" + "\n" + "3: The list of the movies you have watched" + "\n" + "4: The list of the movies you have saved" + "\n" + "5: Show all movies");
         return scanner.nextLine();
     }
+    public String startMenuSeries(){
+        System.out.println("You choose series, now you can pick one of the options");
+        System.out.println( "1: Search for a series" + "\n" + "2: Search a serie in a specific category" + "\n" + "3: The list of the series you have watched" + "\n" + "4: The list of the series you have saved" + "\n" + "5: Show all series");
+        return scanner.nextLine();
+    }
+
+
+
 
 }

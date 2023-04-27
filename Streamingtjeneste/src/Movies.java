@@ -69,7 +69,7 @@ public class Movies extends RollingPictures{
         System.out.println("Enter 'back' to return to the dashboard or press enter to exit");
         String input = scan.nextLine();
         if (input.equalsIgnoreCase("back")) {
-            ui.startMenu(); // throws an error!!!
+            ui.startMenuMovies(); // throws an error!!!
         } else {
             System.exit(0); // Close app
             System.out.println("Closing down application");
