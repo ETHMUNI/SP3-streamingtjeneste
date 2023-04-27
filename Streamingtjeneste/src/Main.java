@@ -72,7 +72,11 @@ public class Main {
                 System.out.println("Selected movie: " + selectedMovie.getName());
 
                 // Call your function on selectedMovie here
-
+               if (selectedMovie.getName().contains(""))
+               {
+                   System.out.println("hvad vil du: ");
+                   System.out.println("safe to fovortie");
+               }
 
             case "2":
 
