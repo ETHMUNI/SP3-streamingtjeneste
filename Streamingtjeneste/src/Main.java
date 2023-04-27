@@ -1,12 +1,17 @@
+import java.util.List;
 import java.util.Scanner;
 
+
 public class Main {
+
+    public static MediaHandler csv=new MediaHandler();
 
     public static void main(String[] args) {
 
         //// Login Part
         UserHandler userHandler = new UserHandler("users.txt");
         TextUI textUI = new TextUI(userHandler);
+
 
         userHandler.loadUsers();
 
@@ -26,6 +31,9 @@ public class Main {
         ////Dashboard
 
         //// Movie Searcher Part
+        //CSVReaderInJava csv = new CSVReaderInJava();
+
+
         //Movies movie = new Movies();
         // Scanner scan = new Scanner(System.in);
         String userChoice = textUI.startMenu();
@@ -33,12 +41,24 @@ public class Main {
 
         switch (userChoice) {
             case "1":
-                Movies.searchFile(Movies.getUserInputMovie());
-                Movies.playMovie();
+                Scanner scanner = new Scanner(System.in);
+                System.out.print("Enter a movie name to search: ");
+                String movieName = scanner.nextLine();
+                List<Movie> searchResult = csv.searchMovieByName(movieName);
+                if (searchResult.equals(movieName)) {
+                    System.out.println("Search results:");
+                    for (Movie movie : searchResult) {
+                        System.out.println(movie.getName());
+                    }
+
+                } else {
+                    System.out.println("Search results:");
+                    System.out.println("Sorry, no movies found with that name.");
+                }
                 break;
             case "2":
-                Movies.searchFile(Movies.getUserInputCategory());
-                Movies.playMovie();
+
+            //    MediaHandler.movieList();
                 break;
             case "3":
 
@@ -47,10 +67,14 @@ public class Main {
             case "5":
                 // go through the movies.txt and print out all the names
                 // then user enters the name of the movie, user wants to watch
-                Movies.getAllMovies();
-                Movies.playMovie();
+               // Movies.playMovie();
+                List<Movie> liste = csv.getMovies();
+                for (Movie movie : liste) {
+                    System.out.println(movie.getName());
+                }
                 textUI.startMenu();
                 break;
+
         }
 
     }
