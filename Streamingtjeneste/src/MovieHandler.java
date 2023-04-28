@@ -13,6 +13,7 @@ public class MovieHandler {
     private List<Movies> movies = readMoviesFromCSV("Movies.txt");
     Movies movie = new Movies("favoritemovies.txt");
 
+
     public List<Movies> getMovies() {
         return movies;
     }
@@ -110,7 +111,7 @@ public class MovieHandler {
 
             String choice = scanner.nextLine();
             if (choice.equals("1")) {
-                movie.saveMovie(); // save movie to favorite movie list.
+                FileIO.saveMovieName(selectedMovies.getTitle()); // save movie to favorite movie list.
             } else if (choice.equals("2")) {
                 System.out.println("You're now watching " + selectedMovies.getTitle());
             } else {
@@ -145,7 +146,7 @@ public class MovieHandler {
 
             String choice2 = movieScanner.nextLine();
             if (choice2.equals("1")) {
-                // Call your function to save the movie to favorites
+                FileIO.saveMovieName(selectedMovie.getTitle());
             } else if (choice2.equals("2")) {
                 System.out.println("You're now watching " + selectedMovie.getTitle());
             } else {
