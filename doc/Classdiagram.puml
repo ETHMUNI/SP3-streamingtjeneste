@@ -77,8 +77,6 @@ Media *-- RollingPictures
 
 RollingPictures <|-- Movies
 RollingPictures <|-- Series
-Movies *-- UserPick
-Series *-- UserPick
 
 UI <|-- TextUI
 IO <|-- UserIO
