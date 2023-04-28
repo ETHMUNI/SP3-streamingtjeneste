@@ -8,6 +8,7 @@ public class Main {
 
         userHandler.loadUsers();
 
+        //log in or create a new user
         String userInput = textUI.getUserInput();
         switch (userInput) {
             case "1":
@@ -31,7 +32,7 @@ public class Main {
         String user = textUI.firstMenu();
 
 
-
+        //It first asks if you want to watch movies or series and then with movie/serie or the other things
         switch (user) {
             case "1":
                 String userChoice = textUI.startMenuMovies();
