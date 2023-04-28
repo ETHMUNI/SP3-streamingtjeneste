@@ -14,9 +14,6 @@ public class MovieHandler {
     Movies movie = new Movies("favoritemovies.txt");
 
 
-    public List<Movies> getMovies() {
-        return movies;
-    }
 
     public List<Movies> searchMovieByName(String movieName) {
         List<Movies> matchingMovies = new ArrayList<>();
@@ -28,11 +25,22 @@ public class MovieHandler {
         }
         return matchingMovies;
     }
-
-    public Movies getMovieByNumber(int number) {
-        return movies.get(number - 1);
+    public List<Movies> searchMovieBycategory(String movieName) {
+        List<Movies> matchingMovies = new ArrayList<>();
+        for (Movies movies : this.movies) {
+            String name = movies.getCategory();
+            if (name.toLowerCase().contains(movieName.toLowerCase())) {
+                matchingMovies.add(movies);
+            }
+        }
+        return matchingMovies;
     }
 
+
+    /*public Movies getMovieByNumber(int number) {
+        return movies.get(number - 1);
+    }
+*/
 
     private static List<Movies> readMoviesFromCSV(String fileName) {
         List<Movies> movies = new ArrayList<>();
@@ -119,6 +127,56 @@ public class MovieHandler {
             }
         }
     }
+
+    public void searchmoviecategory() {
+        MovieHandler movieHandler = new MovieHandler();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a movie name to search: ");
+        String movieName = scanner.nextLine();
+
+        List<Movies> matchingMovies = movieHandler.searchMovieBycategory(movieName);
+
+        if (matchingMovies.size() == 0) {
+            System.out.println("No matching movies found.");
+            return;
+        }
+
+        System.out.println("Matching movies:");
+        for (int i = 0; i < matchingMovies.size(); i++) {
+            System.out.println((i + 1) + ". " + matchingMovies.get(i).getTitle());
+        }
+
+        System.out.print("Enter the number of the movie to select: ");
+        int movieIndex = scanner.nextInt();
+        scanner.nextLine(); // consume the newline character
+
+        if (movieIndex < 1 || movieIndex > matchingMovies.size()) {
+            System.out.println("Invalid movie number.");
+            return;
+        }
+
+        Movies selectedMovies = matchingMovies.get(movieIndex - 1);
+        System.out.println("Selected movie: " + selectedMovies.getTitle());
+
+        // Call your function on selectedMovie here
+        if (selectedMovies.getTitle().contains("")) {
+            System.out.println("Choose between the following options:");
+            System.out.println("1. Save to favorite");
+            System.out.println("2. Play " + selectedMovies.getTitle());
+
+            String choice = scanner.nextLine();
+            if (choice.equals("1")) {
+                FileIO.saveMovieName(selectedMovies.getTitle()); // save movie to favorite movie list.
+            } else if (choice.equals("2")) {
+                System.out.println("You're now watching " + selectedMovies.getTitle());
+            } else {
+                System.out.println("Invalid choice. Please choose 1 or 2.");
+            }
+        }
+    }
+
+
 
     public void showAllMovies() {
         Scanner movieScanner = new Scanner(System.in);

@@ -43,7 +43,7 @@ public class Main {
                 movieHandler.searchmovie();
 
             case "2":
-
+                movieHandler.searchmoviecategory();
             //    MediaHandler.movieList();
                 break;
             case "3":
