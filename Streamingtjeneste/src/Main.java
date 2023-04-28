@@ -34,26 +34,27 @@ public class Main {
         //// Movie Searcher Part
         //CSVReaderInJava csv = new CSVReaderInJava();
 
-
-
         String userChoice = textUI.startMenu();
+        while (true) {
 
-        switch (userChoice) {
-            case "1":
-                movieHandler.searchmovie();
 
-            case "2":
+            switch (userChoice) {
+                case "1":
+                    movieHandler.searchmovie();
+                    break;
+                case "2":
 
-            //    MediaHandler.movieList();
-                break;
-            case "3":
+                    //    MediaHandler.movieList();
+                    break;
+                case "3":
 
-            case "4":
+                case "4":
 
-            case "5":
-                movieHandler.showAllMovies();
-
+                case "5":
+                    movieHandler.showAllMovies();
+                    break;
+            }
+            textUI.backToMenu();
         }
-
     }
 }

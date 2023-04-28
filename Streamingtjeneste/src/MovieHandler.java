@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 public class MovieHandler {
 
+    static Scanner scan = new Scanner(System.in);
     private List<Movies> movies = readMoviesFromCSV("Movies.txt");
     Movies movie = new Movies("favoritemovies.txt");
 
@@ -154,8 +155,6 @@ public class MovieHandler {
             }
         }
     }
-
-
     private static Movies createMovie(String[] metadata) {
         String name = metadata[0];
         String year = metadata[1];
@@ -167,4 +166,3 @@ public class MovieHandler {
     }
 
 }
-
