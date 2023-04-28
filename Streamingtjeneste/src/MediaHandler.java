@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class MediaHandler {
     private List<Movie> movies = readMoviesFromCSV("Movies.txt");
@@ -76,6 +77,66 @@ public class MediaHandler {
         return new Movie(name, year, category, rating);
     }
 
+
+    public void searchmovie() {
+        MediaHandler mediaHandler = new MediaHandler();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a movie name to search: ");
+        String movieName = scanner.nextLine();
+
+        List<Movie> matchingMovies = mediaHandler.searchMovieByName(movieName);
+
+        if (matchingMovies.size() == 0) {
+            System.out.println("No matching movies found.");
+            return;
+        }
+
+        System.out.println("Matching movies:");
+        for (int i = 0; i < matchingMovies.size(); i++) {
+            System.out.println((i + 1) + ". " + matchingMovies.get(i).getName());
+        }
+
+        System.out.print("Enter the number of the movie to select: ");
+        int movieIndex = scanner.nextInt();
+        scanner.nextLine(); // consume the newline character
+
+        if (movieIndex < 1 || movieIndex > matchingMovies.size()) {
+            System.out.println("Invalid movie number.");
+            return;
+        }
+
+        Movie selectedMovie = matchingMovies.get(movieIndex - 1);
+        System.out.println("Selected movie: " + selectedMovie.getName());
+
+        // Call your function on selectedMovie here
+        if (selectedMovie.getName().contains("")) {
+            System.out.println("What would you like to do?");
+            System.out.println("Save to favorites");
+        }
+    }
+
+    public void showAllMovies() {
+        MediaHandler mediaHandler = new MediaHandler();
+        List<Movie> liste = mediaHandler.getMovies();
+        Scanner movieScanner = new Scanner(System.in);
+
+        for (int i = 0; i < liste.size(); i++) {
+            Movie movie = liste.get(i);
+            System.out.println((i+1) + ". " + movie.getName());
+        }
+
+        System.out.print("Please enter the number of the movie you'd like to select: ");
+        int selection = movieScanner.nextInt();
+
+        if (selection < 1 || selection > liste.size()) {
+            System.out.println("Invalid movie number.");
+            return;
+        }
+
+        Movie selectedMovie2 = liste.get(selection - 1);
+        System.out.println("Selected movie: " + selectedMovie2.getName());
+    }
 }
 class Movie {
     private String name;
@@ -118,6 +179,8 @@ class Movie {
 
 
     }
+
+
 
 
     @Override
