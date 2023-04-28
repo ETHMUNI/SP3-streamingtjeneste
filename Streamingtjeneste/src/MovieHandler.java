@@ -12,8 +12,6 @@ import java.util.Scanner;
 public class MovieHandler {
 
     private List<Movies> movies = readMoviesFromCSV("Movies.txt");
-    Movies movie = new Movies("favoritemovies.txt");
-
 
 
     public List<Movies> searchMovieByName(String movieName) {

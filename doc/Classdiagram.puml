@@ -10,14 +10,12 @@ class UserMenu
 class Dashboard
 class MovieHandler
 class UserHandler
-interface UI
-interface IO
 abstract RollingPictures
 
-package "util"{
+
 class TextUI
-class UserIO
-}
+class FileIO
+
 
 Media : String getTitle()
 Media : int getYear()
@@ -78,9 +76,26 @@ Media *-- RollingPictures
 RollingPictures <|-- Movies
 RollingPictures <|-- Series
 
-UI <|-- TextUI
-IO <|-- UserIO
+Dashboard *-- TextUI
+UserMenu *-- TextUI
 
+TextUI : Scanner scan
+TextUI : UserHandler userHandler
+
+TextUI : + TextUI(UserHandler userHandler)
+TextUI : + String getUserInput()
+TextUI : + void loginMenu()
+TextUI : void createUserMenu()
+TextUI : + int counter()
+TextUI : + String startMenu()
+TextUI : + void backToMenu()
+
+Dashboard *-- FileIO
+
+FileIO : - static final String FILEPATH = "Favorite.txt";
+FileIO : - static final String FILEPATH2 = "WatchedMovies.txt";
+FileIO : + static void saveMovieName(String movieName)
+FileIO : + static void watchedMovieName(String movieName)
 
 
 @enduml

@@ -1,4 +1,3 @@
-import java.util.Scanner;
 
 public class DashBoard {
 
@@ -12,26 +11,27 @@ public class DashBoard {
 
         ////Dashboard
         String userChoice = textUI.startMenu();
-
-        switch (userChoice) {
-            case "1":
-                movieHandler.searchmovie();
-                break;
-            case "2":
-                movieHandler.searchmoviecategory();
-                //    MediaHandler.movieList();
-                break;
-            case "3":
-                MovieHandler.movieList("WatchedMovies.txt");
-                break;
-            case "4":
-                MovieHandler.movieList("Favorite.txt");
-                break;
-            case "5":
-                movieHandler.showAllMovies();
-                break;
+        while(true) {
+            switch (userChoice) {
+                case "1":
+                    movieHandler.searchmovie();
+                    break;
+                case "2":
+                    movieHandler.searchmoviecategory();
+                    //    MediaHandler.movieList();
+                    break;
+                case "3":
+                    MovieHandler.movieList("WatchedMovies.txt");
+                    break;
+                case "4":
+                    MovieHandler.movieList("Favorite.txt");
+                    break;
+                case "5":
+                    movieHandler.showAllMovies();
+                    break;
+            }
+            textUI.backToMenu();
         }
-
     }
 
 }

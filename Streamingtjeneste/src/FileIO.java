@@ -1,8 +1,7 @@
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class FileIO implements IO{
+public class FileIO {
 
     private static final String FILEPATH = "Favorite.txt";
     private static final String FILEPATH2 = "WatchedMovies.txt";

@@ -58,4 +58,22 @@ public class TextUI {
         return scanner.nextLine();
     }
 
+    public void backToMenu() {
+        System.out.println("Press 1 to go back to the start menu, or 2 to close the application.");
+        String choice = scanner.nextLine();
+        switch (choice) {
+            case "1":
+                startMenu();
+                break;
+            case "2":
+                System.out.println("Closing the application...");
+                System.exit(0);
+                break;
+            default:
+                System.out.println("Invalid choice. Please try again.");
+                backToMenu();
+                break;
+        }
+    }
+
 }
