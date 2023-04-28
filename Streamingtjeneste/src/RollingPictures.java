@@ -10,7 +10,6 @@ public abstract class RollingPictures implements Media {
     private String category;
 
     private String rating;
-    File file;
 
     public RollingPictures(String title, String year,String category, String rating) {
         this.title = title;
@@ -18,11 +17,6 @@ public abstract class RollingPictures implements Media {
         this.category = category;
         this.rating = rating;
     }
-
-    public RollingPictures(String fileName) {
-        file = new File(fileName);
-    }
-
 
     public String getTitle() {
         return title;

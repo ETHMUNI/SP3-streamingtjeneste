@@ -26,8 +26,6 @@ Main : + static void main(string [] args)
 
 Movies : ArrayList<Movies>
 Movies : + Movies(String title, String year, String category, String rating, String fileName)
-Movies : + loadMovies()
-Movies : + saveMovie()
 Movies : + toString()
 
 
@@ -73,10 +71,10 @@ User : + String getName()
 User : + String getPassword()
 User : + String getId()
 
-RollingPictures : - title
-RollingPictures : - year
-RollingPictures : - category
-RollingPictures : - rating
+RollingPictures : - String title
+RollingPictures : - String year
+RollingPictures : - String category
+RollingPictures : - String rating
 RollingPictures : + RollingPictures(String title, String year,String category, String rating)
 RollingPictures : + RollingPictures(String fileName)
 RollingPictures : + getTitle()
@@ -87,7 +85,7 @@ RollingPictures : + toString()
 
 Main *-- UserMenu
 Main *-- Dashboard
-Dashboard *--Media
+MovieHandler *-- Media
 Dashboard *-- MovieHandler
 Media *-- RollingPictures
 
