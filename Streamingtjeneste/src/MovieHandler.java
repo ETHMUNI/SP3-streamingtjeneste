@@ -138,17 +138,17 @@ public class MovieHandler {
 
         Movies selectedMovie2 = liste.get(selection - 1);
         System.out.println("Selected movie: " + selectedMovie2.getTitle());
-        if (selection.getTitle().contains(""))
+        if (selectedMovie2.getTitle().contains(""))
         {
             System.out.println("Choose between the following options:");
             System.out.println("1. Save to favorite");
-            System.out.println("2. Play " + selection.getTitle());
+            System.out.println("2. Play " + selectedMovie2.getTitle());
 
-            String choice = scanner.nextLine();
+            String choice = movieScanner.nextLine();
             if (choice.equals("1")) {
                 movie.saveMovie(); // save movie to favorite movie list.
             } else if (choice.equals("2")) {
-                System.out.println("You're now watching " + selectedMovies.getTitle());
+                System.out.println("You're now watching " + selectedMovie2.getTitle());
             } else {
                 System.out.println("Invalid choice. Please choose 1 or 2.");
             }
