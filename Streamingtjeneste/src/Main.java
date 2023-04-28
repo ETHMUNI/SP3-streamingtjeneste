@@ -1,7 +1,3 @@
-import java.util.List;
-import java.util.Scanner;
-
-
 public class Main {
 
     //public static MediaHandler csv=new MediaHandler();
@@ -11,7 +7,7 @@ public class Main {
         //// Login Part
         UserHandler userHandler = new UserHandler("users.txt");
         TextUI textUI = new TextUI(userHandler);
-        MediaHandler mediaHandler = new MediaHandler();
+        MovieHandler movieHandler = new MovieHandler();
 
 
 
@@ -34,7 +30,7 @@ public class Main {
 
         switch (userChoice) {
             case "1":
-                mediaHandler.searchmovie();
+                movieHandler.searchmovie();
 
             case "2":
 
@@ -45,7 +41,7 @@ public class Main {
             case "4":
 
             case "5":
-                mediaHandler.showAllMovies();
+                movieHandler.showAllMovies();
 
 
         }

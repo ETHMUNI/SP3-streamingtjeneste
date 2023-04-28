@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class MediaHandler {
+public class MovieHandler {
     private List<Movie> movies = readMoviesFromCSV("Movies.txt");
 
     public List<Movie> getMovies() {
@@ -79,13 +79,13 @@ public class MediaHandler {
 
 
     public void searchmovie() {
-        MediaHandler mediaHandler = new MediaHandler();
+        MovieHandler movieHandler = new MovieHandler();
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter a movie name to search: ");
         String movieName = scanner.nextLine();
 
-        List<Movie> matchingMovies = mediaHandler.searchMovieByName(movieName);
+        List<Movie> matchingMovies = movieHandler.searchMovieByName(movieName);
 
         if (matchingMovies.size() == 0) {
             System.out.println("No matching movies found.");
@@ -117,8 +117,8 @@ public class MediaHandler {
     }
 
     public void showAllMovies() {
-        MediaHandler mediaHandler = new MediaHandler();
-        List<Movie> liste = mediaHandler.getMovies();
+        MovieHandler movieHandler = new MovieHandler();
+        List<Movie> liste = movieHandler.getMovies();
         Scanner movieScanner = new Scanner(System.in);
 
         for (int i = 0; i < liste.size(); i++) {
