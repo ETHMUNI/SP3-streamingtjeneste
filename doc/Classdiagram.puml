@@ -15,8 +15,6 @@ interface UI
 interface IO
 abstract RollingPictures
 
-
-
 package "util"{
 class TextUI
 class UserIO
@@ -47,7 +45,6 @@ RollingPictures : + getYear()
 RollingPictures : + getCategory()
 RollingPictures : + getRating()
 RollingPictures : + toString()
-
 
 UserPick : + void addMedie()
 UserPick : + void removeMedie()
