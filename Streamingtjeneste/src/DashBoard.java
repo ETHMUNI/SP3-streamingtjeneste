@@ -16,7 +16,7 @@ public class DashBoard {
         switch (userChoice) {
         case "1":
             movieHandler.searchmovie();
-
+            break;
         case "2":
             movieHandler.searchmoviecategory();
             //    MediaHandler.movieList();
