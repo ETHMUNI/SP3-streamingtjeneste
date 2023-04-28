@@ -4,8 +4,8 @@
 
 interface Medie
 class Main
-class Film
-class Serie
+class Movies
+class Series
 class UserMenu
 class Dashboard
 class UserPick
@@ -22,21 +22,32 @@ class TextUI
 class UserIO
 }
 
-Medie : String getTitel()
-Medie : int getÅrstal()
-Medie : int getKategori()
-Medie : int Rating()
+Media : String getTitle()
+Media : int getYear()
+Media : int getCategory()
+Media : int getRating()
 
-Film : - String titel
-Film : - int Årstal
-Film : - String kategori 1,2,3
-Film : - int Rating
+Movies : - String title
+Movies : - int year
+Movies : - String category
+Movies : - int rating
 
-Serie : - String titel
-Serie : - int Årstal
-Serie : - String kategori 1,2,3
-Serie : - int Rating
-Serie : - int sæson/Episoder
+Series : - String title
+Series : - int year
+Series : - String category
+Series : - int rating
+Series : - int seasonEpisodes
+
+RollingPictures : - title
+RollingPictures : - year
+RollingPictures : - category
+RollingPictures : - rating
+RollingPictures : + getTitle()
+RollingPictures : + getYear()
+RollingPictures : + getCategory()
+RollingPictures : + getRating()
+RollingPictures : + toString()
+
 
 UserPick : + void addMedie()
 UserPick : + void removeMedie()
@@ -46,15 +57,15 @@ MedieHandler : void håndterer film og serier i Lister
 
 Main *-- UserMenu
 UserMenu *-- Dashboard
-Dashboard *--Medie
+Dashboard *--Media
 Dashboard *-- UserHandler
 Dashboard *-- MedieHandler
-Medie *-- RollingPictures
+Media *-- RollingPictures
 
-RollingPictures <|-- Film
-RollingPictures <|-- Serie
-Film *-- UserPick
-Serie *-- UserPick
+RollingPictures <|-- Movies
+RollingPictures <|-- Series
+Movies *-- UserPick
+Series *-- UserPick
 
 UI <|-- TextUI
 IO <|-- UserIO
