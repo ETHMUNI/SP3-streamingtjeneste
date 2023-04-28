@@ -16,6 +16,7 @@ public class MovieHandler {
     public List<Movies> getMovies() {
         return movies;
     }
+
     public List<Movies> searchMovieByName(String movieName) {
         List<Movies> matchingMovies = new ArrayList<>();
         for (Movies movies : this.movies) {
@@ -26,6 +27,7 @@ public class MovieHandler {
         }
         return matchingMovies;
     }
+
     public Movies getMovieByNumber(int number) {
         return movies.get(number - 1);
     }
@@ -101,8 +103,7 @@ public class MovieHandler {
         System.out.println("Selected movie: " + selectedMovies.getTitle());
 
         // Call your function on selectedMovie here
-        if (selectedMovies.getTitle().contains(""))
-        {
+        if (selectedMovies.getTitle().contains("")) {
             System.out.println("Choose between the following options:");
             System.out.println("1. Save to favorite");
             System.out.println("2. Play " + selectedMovies.getTitle());
@@ -119,36 +120,34 @@ public class MovieHandler {
     }
 
     public void showAllMovies() {
-        MovieHandler movieHandler = new MovieHandler();
-        List<Movies> liste = movieHandler.getMovies();
         Scanner movieScanner = new Scanner(System.in);
-
-        for (int i = 0; i < liste.size(); i++) {
-            Movies movie = liste.get(i);
-            System.out.println((i+1) + ". " + movie.getTitle());
+        for (int i = 0; i < movies.size(); i++) {
+            Movies movie = movies.get(i);
+            System.out.println((i + 1) + ". " + movies.get(i).getTitle());
         }
 
         System.out.print("Please enter the number of the movie you'd like to select: ");
         int selection = movieScanner.nextInt();
+        movieScanner.nextLine();
 
-        if (selection < 1 || selection > liste.size()) {
+        if (selection < 1 || selection > movies.size()) {
             System.out.println("Invalid movie number.");
             return;
         }
 
-        Movies selectedMovie2 = liste.get(selection - 1);
-        System.out.println("Selected movie: " + selectedMovie2.getTitle());
-        if (selectedMovie2.getTitle().contains(""))
-        {
+        Movies selectedMovie = movies.get(selection - 1);
+        System.out.println("Selected movie: " + selectedMovie.getTitle());
+
+        if (selectedMovie.getTitle().contains("")) {
             System.out.println("Choose between the following options:");
             System.out.println("1. Save to favorite");
-            System.out.println("2. Play " + selectedMovie2.getTitle());
+            System.out.println("2. Play " + selectedMovie.getTitle());
 
-            String choice = movieScanner.nextLine();
-            if (choice.equals("1")) {
-                movie.saveMovie(); // save movie to favorite movie list.
-            } else if (choice.equals("2")) {
-                System.out.println("You're now watching " + selectedMovie2.getTitle());
+            String choice2 = movieScanner.nextLine();
+            if (choice2.equals("1")) {
+                // Call your function to save the movie to favorites
+            } else if (choice2.equals("2")) {
+                System.out.println("You're now watching " + selectedMovie.getTitle());
             } else {
                 System.out.println("Invalid choice. Please choose 1 or 2.");
             }

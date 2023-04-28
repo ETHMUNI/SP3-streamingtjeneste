@@ -52,6 +52,7 @@ public class Main {
 
             case "5":
                 movieHandler.showAllMovies();
+                break;
 
         }
 
