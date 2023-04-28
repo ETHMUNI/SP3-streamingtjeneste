@@ -34,10 +34,9 @@ public class Main {
         //CSVReaderInJava csv = new CSVReaderInJava();
 
 
-        //Movies movie = new Movies();
-        // Scanner scan = new Scanner(System.in);
+
         String userChoice = textUI.startMenu();
-        // String movieUserInput = Movies.getUserInput();
+        Movies movie = new Movies("favoritemovies.txt");
 
         switch (userChoice) {
             case "1":
@@ -47,7 +46,7 @@ public class Main {
                 System.out.print("Enter a movie name to search: ");
                 String movieName = scanner.nextLine();
 
-                List<Movie> matchingMovies = mediaHandler.searchMovieByName(movieName);
+                List<Movies> matchingMovies = mediaHandler.searchMovieByName(movieName);
 
                 if (matchingMovies.size() == 0) {
                     System.out.println("No matching movies found.");
@@ -56,7 +55,7 @@ public class Main {
 
                 System.out.println("Matching movies:");
                 for (int i = 0; i < matchingMovies.size(); i++) {
-                    System.out.println((i + 1) + ". " + matchingMovies.get(i).getName());
+                    System.out.println((i + 1) + ". " + matchingMovies.get(i).getTitle());
                 }
 
                 System.out.print("Enter the number of the movie to select: ");
@@ -68,14 +67,24 @@ public class Main {
                     return;
                 }
 
-                Movie selectedMovie = matchingMovies.get(movieIndex - 1);
-                System.out.println("Selected movie: " + selectedMovie.getName());
+                Movies selectedMovies = matchingMovies.get(movieIndex - 1);
+                System.out.println("Selected movie: " + selectedMovies.getTitle());
 
                 // Call your function on selectedMovie here
-               if (selectedMovie.getName().contains(""))
+               if (selectedMovies.getTitle().contains(""))
                {
-                   System.out.println("hvad vil du: ");
-                   System.out.println("safe to fovortie");
+                   System.out.println("Choose between the following options:");
+                   System.out.println("1. Save to favorite");
+                   System.out.println("2. Play " + selectedMovies.getTitle());
+
+                   String choice = scanner.nextLine();
+                   if (choice.equals("1")) {
+                       movie.saveMovie(); // save movie to favorite movie list.
+                   } else if (choice.equals("2")) {
+                       System.out.println("You're now watching " + selectedMovies.getTitle());
+                   } else {
+                       System.out.println("Invalid choice. Please choose 1 or 2.");
+                   }
                }
 
             case "2":
@@ -87,12 +96,12 @@ public class Main {
             case "4":
 
             case "5":
-                List<Movie> liste = csv.getMovies();
+                List<Movies> liste = csv.getMovies();
                 Scanner movieScanner = new Scanner(System.in);
 
                 for (int i = 0; i < liste.size(); i++) {
-                    Movie movie = liste.get(i);
-                    System.out.println((i+1) + ". " + movie.getName());
+                    Movies movies = liste.get(i);
+                    System.out.println((i+1) + ". " + movies.getTitle());
                 }
 
                 System.out.print("Please enter the number of the movie you'd like to select: ");
@@ -103,8 +112,8 @@ public class Main {
                     return;
                 }
 
-                Movie selectedMovie2 = liste.get(selection - 1);
-                System.out.println("Selected movie: " + selectedMovie2.getName());
+                Movies selectedMovies2 = liste.get(selection - 1);
+                System.out.println("Selected movie: " + selectedMovies2.getTitle());
                 break;
 
         }

@@ -8,28 +8,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MediaHandler {
-    private List<Movie> movies = readMoviesFromCSV("Movies.txt");
+    private List<Movies> movies = readMoviesFromCSV("Movies.txt");
 
-    public List<Movie> getMovies() {
+    public List<Movies> getMovies() {
         return movies;
     }
-    public List<Movie> searchMovieByName(String movieName) {
-        List<Movie> matchingMovies = new ArrayList<>();
-        for (Movie movie : movies) {
-            String name = movie.getName();
+    public List<Movies> searchMovieByName(String movieName) {
+        List<Movies> matchingMovies = new ArrayList<>();
+        for (Movies movies : this.movies) {
+            String name = movies.getTitle();
             if (name.toLowerCase().contains(movieName.toLowerCase())) {
-                matchingMovies.add(movie);
+                matchingMovies.add(movies);
             }
         }
         return matchingMovies;
     }
-    public Movie getMovieByNumber(int number) {
+    public Movies getMovieByNumber(int number) {
         return movies.get(number - 1);
     }
 
 
-    private static List<Movie> readMoviesFromCSV(String fileName) {
-        List<Movie> movies = new ArrayList<>();
+    private static List<Movies> readMoviesFromCSV(String fileName) {
+        List<Movies> movies = new ArrayList<>();
 
         Path pathToFile = Paths.get(fileName);
 
@@ -49,7 +49,7 @@ public class MediaHandler {
                 // the file, using a comma as the delimiter
                 String[] parts = line.split(";");
 
-                Movie movie = createMovie(parts);
+                Movies movie = createMovie(parts);
 
                 // adding book into ArrayList
                 movies.add(movie);
@@ -66,70 +66,15 @@ public class MediaHandler {
         return movies;
     }
 
-    private static Movie createMovie(String[] metadata) {
+    private static Movies createMovie(String[] metadata) {
         String name = metadata[0];
         String year = metadata[1];
         String category = metadata[2];
         String rating = metadata[3];
 
         // create and return book of this metadata
-        return new Movie(name, year, category, rating);
+        return new Movies(name, year, category, rating);
     }
-
-}
-class Movie {
-    private String name;
-    private String year;
-    private String category;
-    private String rating;
-
-    public Movie(String name, String year, String category, String rating) {
-        this.name = name;
-        this.year = year;
-        this.category = category;
-        this.rating = rating;
-
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getYear() {
-        return year;
-    }
-    public void setYear(String year) {
-        this.year = year;
-    }
-
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-    public static void getAllMovies(){
-
-
-    }
-
-
-    @Override
-    public String toString() {
-        return name + ", year=" + year + ", category=" + category;
-    }
-
-
-
-
-
-
 
 }
 
