@@ -132,17 +132,17 @@ public class MovieHandler {
         MovieHandler movieHandler = new MovieHandler();
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter a movie name to search: ");
+        System.out.print("Enter a category to search: ");
         String movieName = scanner.nextLine();
 
         List<Movies> matchingMovies = movieHandler.searchMovieBycategory(movieName);
 
         if (matchingMovies.size() == 0) {
-            System.out.println("No matching movies found.");
+            System.out.println("No matching category found.");
             return;
         }
 
-        System.out.println("Matching movies:");
+        System.out.println("Matching movies from category:");
         for (int i = 0; i < matchingMovies.size(); i++) {
             System.out.println((i + 1) + ". " + matchingMovies.get(i).getTitle());
         }
