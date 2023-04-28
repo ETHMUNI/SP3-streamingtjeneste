@@ -10,27 +10,28 @@ public class DashBoard {
 
     public void setupDashboard() {
 
-    ////Dashboard
-    String userChoice = textUI.startMenu();
+        ////Dashboard
+        String userChoice = textUI.startMenu();
 
         switch (userChoice) {
-        case "1":
-            movieHandler.searchmovie();
-            break;
-        case "2":
-            movieHandler.searchmoviecategory();
-            //    MediaHandler.movieList();
-            break;
-        case "3":
+            case "1":
+                movieHandler.searchmovie();
 
-        case "4":
-
-        case "5":
-            movieHandler.showAllMovies();
-            break;
+            case "2":
+                movieHandler.searchmoviecategory();
+                //    MediaHandler.movieList();
+                break;
+            case "3":
+                MovieHandler.movieList("WatchedMovies.txt");
+                break;
+            case "4":
+                MovieHandler.movieList("Favorite.txt");
+                break;
+            case "5":
+                movieHandler.showAllMovies();
+                break;
+        }
 
     }
-
-}
 
 }
