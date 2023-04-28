@@ -8,14 +8,11 @@ class Movies
 class Series
 class UserMenu
 class Dashboard
-class UserPick
-class MediaHandler
+class MovieHandler
 class UserHandler
 interface UI
 interface IO
 abstract RollingPictures
-
-
 
 package "util"{
 class TextUI
@@ -25,30 +22,57 @@ class UserIO
 Media : String getTitle()
 Media : int getYear()
 Media : int getCategory()
-Media : int Rating()
+Media : int getRating()
 
-Movies : - String title
-Movies : - int Year
-Movies : - String category 1,2,3
-Movies : - int Rating
+Main : + static void main(string [] args)
 
-Series : - String title
-Series : - int Year
-Series : - String category 1,2,3
-Series : - int Rating
-Series : - int season/Episode
+Movies : ArrayList<Movies>
+Movies : + Movies(String title, String year, String category, String rating, String fileName)
+Movies : + loadMovies()
+Movies : + saveMovie()
+Movies : + toString()
 
-UserPick : + void addMedia()
-UserPick : + void removeMedia()
-UserPick : + void playMedia()
-UserHandler : void håndterer login og bruger data
-MediaHandler : void håndterer film og serier i Lister
+Series : + Series(String title, String year, String category, String rating)
+
+UserMenu : + setupUserMenu()
+
+Dashboard : + setupDashboard()
+
+MovieHandler : - List<Movies>
+MovieHandler : + searchMovieByName(String movieName)
+MovieHandler : + searchMovieBycategory(String movieName)
+MovieHandler : + readMoviesFromCSV(String fileName)
+MovieHandler : + searchmovie()
+MovieHandler : + searchmoviecategory()
+MovieHandler : + showAllMovies()
+MovieHandler : + createMovie(String[] metadata)
+MovieHandler : + movieList(String filePath)
+
+UserHandler : + UserHandler(String filename)
+UserHandler : + login(String username, String password, String id)
+UserHandler : + createUser(String username, String password, String id)
+UserHandler : + loadUsers()
+UserHandler : + saveUsers()
+UserHandler : + isUserNameValid(String username)
+UserHandler : + isValid(String password)
+
+RollingPictures : - title
+RollingPictures : - year
+RollingPictures : - category
+RollingPictures : - rating
+RollingPictures : + RollingPictures(String title, String year,String category, String rating)
+RollingPictures : + RollingPictures(String fileName)
+RollingPictures : + getTitle()
+RollingPictures : + getYear()
+RollingPictures : + getCategory()
+RollingPictures : + getRating()
+RollingPictures : + toString()
 
 Main *-- UserMenu
 UserMenu *-- Dashboard
 Dashboard *--Media
 Dashboard *-- UserHandler
-Dashboard *-- MediaHandler
+Dashboard *-- MovieHandler
 Media *-- RollingPictures
 
 RollingPictures <|-- Movies
