@@ -41,10 +41,13 @@ public class Main {
         switch (userChoice) {
             case "1":
                 movieHandler.searchmovie();
+                textUI.startMenu();
+                break;
 
             case "2":
                 movieHandler.searchmoviecategory();
             //    MediaHandler.movieList();
+                textUI.startMenu();
                 break;
             case "3":
 
@@ -52,6 +55,7 @@ public class Main {
 
             case "5":
                 movieHandler.showAllMovies();
+                textUI.startMenu();
                 break;
 
         }
