@@ -1,4 +1,6 @@
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -77,6 +79,16 @@ public class MovieHandler {
         return new Movie(name, year, category, rating);
     }
 
+    public void saveMovieName(String movieName, String filePath) {
+        try {
+            File file = new File(filePath);
+            FileWriter writer = new FileWriter(file);
+            writer.write(movieName);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void searchmovie() {
         MovieHandler movieHandler = new MovieHandler();
@@ -112,7 +124,17 @@ public class MovieHandler {
         // Call your function on selectedMovie here
         if (selectedMovie.getName().contains("")) {
             System.out.println("What would you like to do?");
-            System.out.println("Save to favorites");
+            System.out.println("1. Play Movie");
+            System.out.println("2. Save to favorites");
+            int pick = scanner.nextInt();
+            if (pick == 1){
+                System.out.println(selectedMovie.getName() + " Is now playing enjoy!");
+            } else if(pick == 2){
+                System.out.println("You have now added the movie to you favorite list");
+                String movieName2 = selectedMovie.getName();
+                String filePath = "Favorite.txt";
+                saveMovieName(movieName2, filePath);
+            }
         }
     }
 
@@ -187,7 +209,6 @@ class Movie {
     public String toString() {
         return name + ", year=" + year + ", category=" + category;
     }
-
 
 
 
