@@ -47,13 +47,14 @@ public class Main {
             //    MediaHandler.movieList();
                 break;
             case "3":
-
+                MovieHandler.movieList("WatchedMovies.txt");
+                break;
             case "4":
-
+                MovieHandler.movieList("Favorite.txt");
+                break;
             case "5":
                 movieHandler.showAllMovies();
                 break;
-
         }
 
     }

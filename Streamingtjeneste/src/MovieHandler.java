@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -122,6 +123,7 @@ public class MovieHandler {
                 FileIO.saveMovieName(selectedMovies.getTitle()); // save movie to favorite movie list.
             } else if (choice.equals("2")) {
                 System.out.println("You're now watching " + selectedMovies.getTitle());
+                FileIO.watchedMovieName(selectedMovies.getTitle());
             } else {
                 System.out.println("Invalid choice. Please choose 1 or 2.");
             }
@@ -170,6 +172,7 @@ public class MovieHandler {
                 FileIO.saveMovieName(selectedMovies.getTitle()); // save movie to favorite movie list.
             } else if (choice.equals("2")) {
                 System.out.println("You're now watching " + selectedMovies.getTitle());
+                FileIO.watchedMovieName(selectedMovies.getTitle());
             } else {
                 System.out.println("Invalid choice. Please choose 1 or 2.");
             }
@@ -207,6 +210,7 @@ public class MovieHandler {
                 FileIO.saveMovieName(selectedMovie.getTitle());
             } else if (choice2.equals("2")) {
                 System.out.println("You're now watching " + selectedMovie.getTitle());
+                FileIO.watchedMovieName(selectedMovie.getTitle());
             } else {
                 System.out.println("Invalid choice. Please choose 1 or 2.");
             }
@@ -224,5 +228,14 @@ public class MovieHandler {
         return new Movies(name, year, category, rating);
     }
 
+    public static void movieList(String filePath) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line = br.readLine();
+            System.out.println(line);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
+
 
