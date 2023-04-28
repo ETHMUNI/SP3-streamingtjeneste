@@ -5,12 +5,12 @@
 interface Media
 class Main
 class Movies
-class Series
 class UserMenu
 class Dashboard
 class MovieHandler
 class UserHandler
 abstract RollingPictures
+class User
 
 
 class TextUI
@@ -30,10 +30,15 @@ Movies : + loadMovies()
 Movies : + saveMovie()
 Movies : + toString()
 
-Series : + Series(String title, String year, String category, String rating)
 
+UserMenu : UserHandler userHandler = new UserHandler("users.txt")
+UserMenu : TextUI textUI = new TextUI(userHandler)
 UserMenu : + setupUserMenu()
 
+
+Dashboard : UserHandler userHandler = new UserHandler("users.txt")
+Dashboard : TextUI textUI = new TextUI(userHandler);
+Dashboard : MovieHandler movieHandler = new MovieHandler();
 Dashboard : + setupDashboard()
 
 MovieHandler : - List<Movies>
@@ -46,6 +51,10 @@ MovieHandler : + showAllMovies()
 MovieHandler : + createMovie(String[] metadata)
 MovieHandler : + movieList(String filePath)
 
+UserMenu *-- UserHandler
+
+UserHandler : ArrayList<User> users
+UserHandler : File file
 UserHandler : + UserHandler(String filename)
 UserHandler : + login(String username, String password, String id)
 UserHandler : + createUser(String username, String password, String id)
@@ -53,6 +62,16 @@ UserHandler : + loadUsers()
 UserHandler : + saveUsers()
 UserHandler : + isUserNameValid(String username)
 UserHandler : + isValid(String password)
+
+UserHandler *-- User
+
+User : - String name;
+User : - String password;
+User : - String id;
+User : + User(String name, String password, String id)
+User : + String getName()
+User : + String getPassword()
+User : + String getId()
 
 RollingPictures : - title
 RollingPictures : - year
@@ -67,14 +86,13 @@ RollingPictures : + getRating()
 RollingPictures : + toString()
 
 Main *-- UserMenu
-UserMenu *-- Dashboard
+Main *-- Dashboard
 Dashboard *--Media
-Dashboard *-- UserHandler
 Dashboard *-- MovieHandler
 Media *-- RollingPictures
 
 RollingPictures <|-- Movies
-RollingPictures <|-- Series
+
 
 Dashboard *-- TextUI
 UserMenu *-- TextUI
