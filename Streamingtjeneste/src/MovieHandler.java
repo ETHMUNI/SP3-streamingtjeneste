@@ -35,12 +35,6 @@ public class MovieHandler {
         return matchingMovies;
     }
 
-
-    /*public Movies getMovieByNumber(int number) {
-        return movies.get(number - 1);
-    }
-*/
-
     private static List<Movies> readMoviesFromCSV(String fileName) {
         List<Movies> movies = new ArrayList<>();
 
@@ -78,7 +72,25 @@ public class MovieHandler {
 
         return movies;
     }
+    class MovieMenu {
+        public void displayMenu(Movies selectedMovie) {
+            Scanner scanner = new Scanner(System.in);
 
+            System.out.println("Choose between the following options:");
+            System.out.println("1. Save to favorite");
+            System.out.println("2. Play " + selectedMovie.getTitle());
+
+            String choice = scanner.nextLine();
+            if (choice.equals("1")) {
+                FileIO.saveMovieName(UserHandler.getName(),selectedMovie.getTitle()); // save movie to favorite movie list.
+            } else if (choice.equals("2")) {
+                System.out.println("You're now watching " + selectedMovie.getTitle());
+                FileIO.watchedMovieName(UserHandler.getName(),selectedMovie.getTitle());
+            } else {
+                System.out.println("Invalid choice. Please choose 1 or 2.");
+            }
+        }
+    }
     public void searchmovie() {
         MovieHandler movieHandler = new MovieHandler();
         Scanner scanner = new Scanner(System.in);
@@ -112,19 +124,8 @@ public class MovieHandler {
 
         // Call your function on selectedMovie here
         if (selectedMovies.getTitle().contains("")) {
-            System.out.println("Choose between the following options:");
-            System.out.println("1. Save to favorite");
-            System.out.println("2. Play " + selectedMovies.getTitle());
-
-            String choice = scanner.nextLine();
-            if (choice.equals("1")) {
-                FileIO.saveMovieName(selectedMovies.getTitle()); // save movie to favorite movie list.
-            } else if (choice.equals("2")) {
-                System.out.println("You're now watching " + selectedMovies.getTitle());
-                FileIO.watchedMovieName(selectedMovies.getTitle());
-            } else {
-                System.out.println("Invalid choice. Please choose 1 or 2.");
-            }
+            MovieMenu movieMenu = new MovieMenu();
+            movieMenu.displayMenu(selectedMovies);
         }
     }
 
@@ -161,19 +162,8 @@ public class MovieHandler {
 
         // Call your function on selectedMovie here
         if (selectedMovies.getTitle().contains("")) {
-            System.out.println("Choose between the following options:");
-            System.out.println("1. Save to favorite");
-            System.out.println("2. Play " + selectedMovies.getTitle());
-
-            String choice = scanner.nextLine();
-            if (choice.equals("1")) {
-                FileIO.saveMovieName(selectedMovies.getTitle()); // save movie to favorite movie list.
-            } else if (choice.equals("2")) {
-                System.out.println("You're now watching " + selectedMovies.getTitle());
-                FileIO.watchedMovieName(selectedMovies.getTitle());
-            } else {
-                System.out.println("Invalid choice. Please choose 1 or 2.");
-            }
+            MovieMenu movieMenu = new MovieMenu();
+            movieMenu.displayMenu(selectedMovies);
         }
     }
 
@@ -195,23 +185,12 @@ public class MovieHandler {
             return;
         }
 
-        Movies selectedMovie = movies.get(selection - 1);
-        System.out.println("Selected movie: " + selectedMovie.getTitle());
+        Movies selectedMovies = movies.get(selection - 1);
+        System.out.println("Selected movie: " + selectedMovies.getTitle());
 
-        if (selectedMovie.getTitle().contains("")) {
-            System.out.println("Choose between the following options:");
-            System.out.println("1. Save to favorite");
-            System.out.println("2. Play " + selectedMovie.getTitle());
-
-            String choice2 = movieScanner.nextLine();
-            if (choice2.equals("1")) {
-                FileIO.saveMovieName(selectedMovie.getTitle());
-            } else if (choice2.equals("2")) {
-                System.out.println("You're now watching " + selectedMovie.getTitle());
-                FileIO.watchedMovieName(selectedMovie.getTitle());
-            } else {
-                System.out.println("Invalid choice. Please choose 1 or 2.");
-            }
+        if (selectedMovies.getTitle().contains("")) {
+            MovieMenu movieMenu = new MovieMenu();
+            movieMenu.displayMenu(selectedMovies);
         }
     }
 

@@ -7,17 +7,26 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserHandler {
-    ArrayList<User> users;
+
+      ArrayList<User> users;
     File file;
 
     public UserHandler(String filename){
         file = new File(filename);
     }
 
+    private static String currentUser;
+
     public boolean login(String username, String password, String id) {
-        for(User user: users){
-            if(user.getName().equals(username) && user.getPassword().equals(password) )
+        if (username == null || password == null) {
+            return false;
+        }
+        for (User user : users) {
+            if (user.getName() != null && user.getPassword() != null
+                    && user.getName().equals(username) && user.getPassword().equals(password)) {
+                currentUser = user.getName();
                 return true;
+            }
         }
         return false;
     }
@@ -82,6 +91,9 @@ public class UserHandler {
         else {
             return true;
         }
+    }
+    public static String getName() {
+        return currentUser;
     }
 
 

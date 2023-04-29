@@ -5,6 +5,6 @@ public class Main {
         DashBoard dashBoard = new DashBoard();
 
         userMenu.setupUserMenu();
-        dashBoard.setupDashboard();
+       dashBoard.setupDashboard();
     }
 }

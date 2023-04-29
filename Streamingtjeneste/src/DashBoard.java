@@ -18,7 +18,7 @@ public class DashBoard {
                     break;
                 case "2":
                     movieHandler.searchmoviecategory();
-                    //    MediaHandler.movieList();
+                    //  MediaHandler.movieList();
                     break;
                 case "3":
                     MovieHandler.movieList("WatchedMovies.txt");
