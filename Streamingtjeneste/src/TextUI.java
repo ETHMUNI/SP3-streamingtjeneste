@@ -63,7 +63,7 @@ public class TextUI {
         String choice = scanner.nextLine();
         switch (choice) {
             case "1":
-                startMenu();
+                DashBoard.setupDashboard();
                 break;
             case "2":
                 System.out.println("Closing the application...");

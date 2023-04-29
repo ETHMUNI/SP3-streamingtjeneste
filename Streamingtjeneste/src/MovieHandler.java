@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -72,6 +70,9 @@ public class MovieHandler {
 
         return movies;
     }
+
+
+
     class MovieMenu {
         public void displayMenu(Movies selectedMovie) {
             Scanner scanner = new Scanner(System.in);
@@ -213,6 +214,11 @@ public class MovieHandler {
             e.printStackTrace();
         }
     }
+
+
+
+
+
 }
 
 
