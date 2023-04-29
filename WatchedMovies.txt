@@ -12,3 +12,5 @@ mustafa,Annie Hall
 mustafa,Shane
 mustafa,Vertigo
 mustafa,The African Queen
+mustafa,The Great Dictator
+mustafa,Vertigo

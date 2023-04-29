@@ -3,7 +3,7 @@ public class UserMenu {
     UserHandler userHandler = new UserHandler("users.txt");
     TextUI textUI = new TextUI(userHandler);
     public void setupUserMenu() {
-            userHandler.loadUsers();
+           userHandler.loadUsers();
 
             String userInput = textUI.getUserInput();
             switch (userInput) {
