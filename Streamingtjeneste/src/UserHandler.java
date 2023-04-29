@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class UserHandler {
 
-      ArrayList<User> users;
+    ArrayList<User> users = new ArrayList<>();
     File file;
 
     public UserHandler(String filename){
