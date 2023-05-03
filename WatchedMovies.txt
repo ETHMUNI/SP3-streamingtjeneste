@@ -14,3 +14,6 @@ mustafa,Vertigo
 mustafa,The African Queen
 mustafa,The Great Dictator
 mustafa,Vertigo
+mustafa,Mr Smith Goes To Washington
+mustafa,Yankee Doodle Dandy
+mustafa,The Shawshank Redemption
